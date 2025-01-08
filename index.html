@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Matemático</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TIC TAC TOE</h1>
+<div class="difficulty-selector">
+    <label for="difficulty">Nivel de Dificultad:</label>
+    <select id="difficulty" class="difficulty-select">
+        <option value="primaria">Primaria</option>
+        <option value="secundaria">Secundaria</option>
+        <option value="universidad">Universidad</option>
+    </select>
+</div>
+            <div id="score" class="score-board">
+                <div class="player-score">
+                    <i class="fas fa-times"></i>
+                    <span class="score-x">0</span>
+                </div>
+                <div class="score-divider">:</div>
+                <div class="player-score">
+                    <i class="fas fa-circle"></i>
+                    <span class="score-o">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-container">
+                <div class="current-question">
+                    <h3>Pregunta Actual:</h3>
+                    <p id="message-text"></p>
+                </div>
+
+                <div id="board" class="board">
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                </div>
+
+                <div id="message" class="message hidden">
+                    <div class="message-content">
+                        <h2 class="result-title">Resultado</h2>
+                        <p id="result-text"></p>
+                        <div class="button-container">
+                            <button id="restartButton" class="button">
+                                <i class="fas fa-redo"></i> Reiniciar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="game-info">
+                <div class="turn-indicator">
+                    <h3>Turno actual:</h3>
+                    <div id="current-turn" class="current-turn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    
+                  
+                        
+                    <button id="toggleSoundButton" class="button secondary">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Desarrollado por Marco Ballesteros Suarez - 2024</p>
+        </footer>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>¡Responde la pregunta!</h2>
+            <p id="modal-question"></p>
+            <div class="hint-box hidden" id="hint-box">
+                <p><i class="fas fa-lightbulb"></i> <span id="hint-text"></span></p>
+            </div>
+            <input type="text" id="answer-input" placeholder="Tu respuesta...">
+            <div class="attempts-left">
+                Intentos restantes: <span id="attempts-count">3</span>
+            </div>
+            <button id="submitAnswer" class="button">Enviar Respuesta</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

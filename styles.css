@@ -1,0 +1,260 @@
+
+:root {
+    --primary-color: #1317ff;
+    --secondary-color: #ff0000;
+    --bg-transparent: #000000b0;
+    --text-color: #f7f1f1c4;
+    --border-color: #fffffff1;
+    --hover-color: #e0e0e0;
+    --button-primary: #0e41ebbe;
+    --button-hover: #9b0d0d;
+    --shadow-color: rgba(250, 250, 250, 0.678);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: url("https://i.gifer.com/O4NR.gif") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.score-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background: var(--bg-transparent);
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.player-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.score-divider {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.game-container {
+    background: var(--bg-transparent);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: relative;
+}
+.difficulty-selector {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.difficulty-select {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-select:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.difficulty-select option {
+    background-color: #000;
+    color: var(--text-color);
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin: 20px auto;
+    max-width: fit-content;
+}
+
+.cell {
+    width: 90px;
+    height: 95px;
+    background-color: #00000056;
+    border: 2px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+}
+
+.cell:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.cell.x::before,
+.cell.circle::before {
+    position: absolute;
+    animation: markAppear 0.3s ease-out;
+}
+
+.cell.x::before {
+    content: 'X';
+    color: var(--primary-color);
+}
+
+.cell.circle::before {
+    content: 'O';
+    color: var(--secondary-color);
+}
+
+@keyframes markAppear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.message, .modal {
+    background: var(--bg-transparent);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--button-primary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(233, 233, 233, 0.39);
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+
+.game-info {
+    background: var(--bg-transparent);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.turn-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    #board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .cell {
+        width: 75px;
+        height: 75px;
+        font-size: 2rem;
+    }
+
+    .score-board {
+        gap: 1rem;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.winner {
+    animation: pulse 1s infinite;
+}
+
+.hint-box, .controls button {
+    transition: all 0.3s ease;
+}
+
+.hint-box:hover, .controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
